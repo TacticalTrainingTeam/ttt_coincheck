@@ -1,27 +1,25 @@
-# MOD_TITLE
+# TTT Coin Check
 
-![MOD_TITLE Logo](https://github.com/Andx667/MOD_REPO/blob/main/img/icon.png)
+![TTT Coin Check Logo](https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/img/icon.png)
 
 <p align="center">
-    <a href="https://github.com/Andx667/MOD_REPO/issues">
-        <img src="https://img.shields.io/github/issues-raw/Andx667/MOD_REPO.svg?style=flat-square&label=Issues" alt="MOD_TITLE Issues">
+    <a href="https://github.com/TacticalTrainingTeam/ttt_coincheck/issues">
+        <img src="https://img.shields.io/github/issues-raw/TacticalTrainingTeam/ttt_coincheck.svg?style=flat-square&label=Issues" alt="TTT Coin Check Issues">
     </a>
     <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=0">
-        <img src="https://img.shields.io/steam/downloads/0.svg?style=flat-square&label=Downloads" alt="MOD_TITLE Downloads">
+        <img src="https://img.shields.io/steam/downloads/0.svg?style=flat-square&label=Downloads" alt="TTT Coin Check Downloads">
     </a>
-    <a href="https://github.com/Andx667/MOD_REPO/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MOD_TITLE License">
+    <a href="https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/License-APL SA-red?style=flat-square" alt="TTT Coin Check License">
     </a>
     <br>
-    <img src="https://img.shields.io/github/actions/workflow/status/Andx667/MOD_REPO/check.yml?style=flat-square&label=Check" alt="Check">
-    <img src="https://img.shields.io/github/actions/workflow/status/Andx667/MOD_REPO/validate.yml?style=flat-square&label=Validate" alt="Validate">
+    <img src="https://img.shields.io/github/actions/workflow/status/TacticalTrainingTeam/ttt_coincheck/check.yml?style=flat-square&label=Check" alt="Check">
+    <img src="https://img.shields.io/github/actions/workflow/status/TacticalTrainingTeam/ttt_coincheck/validate.yml?style=flat-square&label=Validate" alt="Validate">
 </p>
 
-__Requires__ [CBA_A3](https://github.com/CBATeam/CBA_A3).
-<!-- TEMPLATE: if this mod has no hard dependency, replace the line above with something like: -->
-<!-- __No hard dependencies__ — built on Arma 3's own <X> module. -->
+__Requires__ [CBA_A3](https://github.com/CBATeam/CBA_A3) and [ACE3](https://github.com/acemod/ACE3).
 
-__MOD_TITLE__ (MOD_ABBR) one-sentence description of what the mod does.
+__TTT Coin Check__ (TCC) recreates the military challenge-coin check: a player carrying their coin can start a check via an ACE self-action, and everyone else nearby has a limited time and range to present their own coin or pay a physical punishment.
 
 The project is entirely __open-source__ and any contributions are welcome.
 
@@ -30,8 +28,12 @@ Discord: <https://discord.gg/ag4v6kxYAa>
 
 ## Features
 
-- Feature one
-- Feature two
+- Start a coin check via an ACE self-action; everyone else with a coin and the setting enabled has a set time and range to present theirs
+- Server-authoritative: the server alone creates the shared ground weapon holder and decides who's late
+- Configurable per-player punishment (knee bends, push-ups, or random) for anyone who fails to present in time
+- Coins are distributed automatically to registered players and kept in a database (`addons/coin_check/db.hpp`) synced against the TTT squad roster by [`tools/sync_coin_db.py`](tools/sync_coin_db.py)
+
+See [addons/coin_check/readme.md](addons/coin_check/readme.md) for full configuration details.
 
 ## Contributing
 
@@ -39,4 +41,4 @@ For new contributors, see the [Contributing Setup & Guidelines](./.github/CONTRI
 
 ## License
 
-MOD_TITLE is licensed under [MIT](./LICENSE).
+TTT Coin Check is licensed under the [Arma Public License – Share Alike](./LICENSE).

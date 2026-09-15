@@ -1,6 +1,6 @@
-name = "MOD_TITLE"
-author = "Andx"
-prefix = "MOD_PREFIX"
+name = "TTT Coin Check"
+author = "Tactical Training Team"
+prefix = "tcc"
 mainprefix = "z"
 
 [version]
@@ -15,6 +15,7 @@ changelog = "CHANGELOG.md"
 include = [
     "mod.cpp",
     "meta.cpp",
+    "authors.txt",
     "LICENSE",
     "README.md",
 ]

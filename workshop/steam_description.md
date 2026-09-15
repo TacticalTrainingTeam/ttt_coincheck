@@ -1,24 +1,28 @@
-# MOD_TITLE
+# TTT Coin Check
 
-**MOD_TITLE** (MOD_ABBR) one-sentence description of what the mod does.
+**TTT Coin Check** (TCC) recreates the military challenge-coin check: a player carrying their coin can start a check via an ACE self-action, and everyone else nearby has a limited time and range to present their own coin or pay a physical punishment.
 
 # Requirements
 
 - [CBA_A3](https://github.com/CBATeam/CBA_A3)
+- [ACE3](https://github.com/acemod/ACE3)
 
 # Features
 
-- **Feature name** — short description
+- **Coin check self-action** — present your coin via ACE, or lose the bet
+- **Server-authoritative** — the server alone creates the shared holder and decides who's late
+- **Configurable punishment** — knee bends, push-ups, or random, per player
+- **Automatic distribution** — registered players get their coin once per mission
 
 # Source & Issues
 
 Fully open-source. Bug reports, feature requests, and contributions are all welcome.
 
-[GitHub Repository](https://github.com/Andx667/MOD_REPO)
-[Report an Issue](https://github.com/Andx667/MOD_REPO/issues)
+[GitHub Repository](https://github.com/TacticalTrainingTeam/ttt_coincheck)
+[Report an Issue](https://github.com/TacticalTrainingTeam/ttt_coincheck/issues)
 [Discord](https://discord.gg/ag4v6kxYAa)
 
-Licensed under [MIT](https://github.com/Andx667/MOD_REPO/blob/main/LICENSE).
+Licensed under the [Arma Public License – Share Alike](https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/LICENSE).
 
 ---
 

@@ -13,8 +13,8 @@ version, and start a fresh empty [Unreleased] section above it. -->
 
 ## [Unreleased]
 
-## [0.1.0] - 2026-09-14
+## [1.0.0] - 2026-09-15
 
 ### Added
 
-- Initial release
+- Initial release, split out of [ttt_a3](https://github.com/TacticalTrainingTeam/ttt_a3)'s `add-coin-check` branch into its own mod

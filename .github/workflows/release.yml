@@ -20,6 +20,14 @@ jobs:
       - name: Checkout the source code
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Sync coin database
+        run: python tools/sync_coin_db.py
+
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
 
@@ -30,7 +38,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: releases/MOD_PREFIX-latest.zip
-          asset_name: MOD_PREFIX-${{ github.ref_name }}.zip
+          file: releases/tcc-latest.zip
+          asset_name: tcc-${{ github.ref_name }}.zip
           tag: ${{ github.ref }}
           overwrite: true
