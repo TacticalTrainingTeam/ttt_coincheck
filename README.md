@@ -1,6 +1,8 @@
 # TTT Coin Check
 
-![TTT Coin Check Logo](https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/img/icon.png)
+<p align="center">
+    <img src="https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/img/icon.png" alt="TTT Coin Check Logo">
+</p>
 
 <p align="center">
     <a href="https://github.com/TacticalTrainingTeam/ttt_coincheck/issues">
