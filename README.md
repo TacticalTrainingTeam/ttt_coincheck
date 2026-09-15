@@ -24,7 +24,7 @@ __TTT Coin Check__ (TCC) recreates the military challenge-coin check: a player c
 The project is entirely __open-source__ and any contributions are welcome.
 
 Steam Workshop: <https://steamcommunity.com/sharedfiles/filedetails/?id=0>
-Discord: <https://discord.gg/ag4v6kxYAa>
+Discord: <https://discord.tacticalteam.de/>
 
 ## Features
 
