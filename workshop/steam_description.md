@@ -20,7 +20,7 @@ Fully open-source. Bug reports, feature requests, and contributions are all welc
 
 [GitHub Repository](https://github.com/TacticalTrainingTeam/ttt_coincheck)
 [Report an Issue](https://github.com/TacticalTrainingTeam/ttt_coincheck/issues)
-[Discord](https://discord.gg/ag4v6kxYAa)
+[Discord](https://discord.tacticalteam.de/)
 
 Licensed under the [Arma Public License – Share Alike](https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/LICENSE).
 
