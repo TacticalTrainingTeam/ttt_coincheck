@@ -1,0 +1,21 @@
+name = "TTT Coin Check"
+author = "Tactical Training Team"
+prefix = "tcc"
+mainprefix = "z"
+
+[version]
+path = "addons/main/script_version.hpp"
+git_hash = 0
+
+[hemtt.publish]
+description = "workshop/steam_description.md"
+changelog = "CHANGELOG.md"
+
+[files]
+include = [
+    "mod.cpp",
+    "meta.cpp",
+    "authors.txt",
+    "LICENSE",
+    "README.md",
+]

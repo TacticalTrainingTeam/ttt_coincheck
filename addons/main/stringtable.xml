@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="tcc">
+    <Package name="Main">
+        <Key ID="STR_tcc_Main_Author">
+            <English>Tactical Training Team</English>
+            <German>Tactical Training Team</German>
+        </Key>
+        <Key ID="STR_tcc_Main_URL">
+            <English>https://github.com/TacticalTrainingTeam/ttt_coincheck</English>
+            <German>https://github.com/TacticalTrainingTeam/ttt_coincheck</German>
+        </Key>
+    </Package>
+</Project>

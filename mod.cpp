@@ -1,0 +1,14 @@
+name			= "TTT Coin Check v0.0.0";	// Name of your mod
+author			= "Tactical Training Team";					// Affects Arma 3 Launcher, when the mod are loaded as local
+logo			= "img\icon_ca.paa";			// Logo displayed in the main menu
+logoOver		= "img\icon_ca.paa";			// When the mouse is over, in the main menu
+tooltip			= "TTT Coin Check";
+tooltipOwned	= "by Tactical Training Team";			// Tool tip displayed when the mouse is left over, in the main menu
+picture			= "img\icon_ca.paa";			// Picture displayed from the expansions menu. Optimal size is 2048x1024
+actionName		= "GitHub";
+action			= "https://github.com/TacticalTrainingTeam/ttt_coincheck";	// Website URL, that can be accessed from the expansions menu
+overview		= "Recreates the military challenge-coin check via an ACE self-action.";	// Supports structured text
+hideName		= 0;						// Hide the extension name
+hidePicture		= 0;						// Hide the extension menu
+dlcColor[]		= { 0.23, 0.39, 0.30, 1 };	// Color used for DLC stripes and backgrounds (RGBA)
+logoSmall		= "img\icon_ca.paa";			// Display in creative lists, next to the entities added by the mod
