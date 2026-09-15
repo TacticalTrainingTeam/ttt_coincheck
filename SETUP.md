@@ -136,6 +136,5 @@ make it — don't leave it to write itself at release time.
 
 ## 6. Everything else
 
-- Add real `img/icon.png` / `img/icon_ca.paa` (referenced by `mod.cpp` and the README)
 - Fill in `workshop/` with real screenshots once you have them
 - Set repo topics (at minimum: `arma3`) and the repo description/homepage to the Steam Workshop URL once published
