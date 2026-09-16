@@ -4,8 +4,8 @@
 
 # Requirements
 
-- [CBA_A3](https://github.com/CBATeam/CBA_A3)
-- [ACE3](https://github.com/acemod/ACE3)
+- [CBA_A3](https://steamcommunity.com/workshop/filedetails/?id=450814997)
+- [ACE3](https://steamcommunity.com/workshop/filedetails/?id=463939057)
 
 # Features
 
@@ -26,4 +26,4 @@ Licensed under the [Arma Public License – Share Alike](https://github.com/Tact
 
 ---
 
-Suchst du eine deutschsprachige Arma3 und Reforger Community? -> https://tacticalteam.de/mitmachen
+Suchst du eine deutschsprachige Arma3 und Reforger Community? -> [tacticalteam.de/mitmachen](https://tacticalteam.de/mitmachen)
