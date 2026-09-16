@@ -4,8 +4,8 @@
 
 # Requirements
 
-- [CBA_A3](https://github.com/CBATeam/CBA_A3)
-- [ACE3](https://github.com/acemod/ACE3)
+- [CBA_A3](https://steamcommunity.com/workshop/filedetails/?id=450814997)
+- [ACE3](https://steamcommunity.com/workshop/filedetails/?id=463939057)
 
 # Features
 
