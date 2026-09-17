@@ -7,6 +7,7 @@
     "settings": {
         "editor.insertSpaces": true,
         "editor.detectIndentation": false,
+        "editor.tabSize": 4,
 
         "files.autoSave": "onFocusChange",
         "files.trimFinalNewlines": true,
