@@ -13,6 +13,8 @@ version, and start a fresh empty [Unreleased] section above it. -->
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-09-18
+
 ## [1.0.0] - 2026-09-15
 
 ### Added
