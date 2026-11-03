@@ -25,7 +25,9 @@ if (netId ACE_player == _initiatorNetId) exitWith {
     (ACE_player call FUNC(hasCoin)) params ["_hasCoin", "_class"];
     if (!_hasCoin) exitWith {};
 
-    [ACE_player, _class, objectFromNetId _holderNetId] call FUNC(respond);
+    // The holder may not have replicated yet - respond then leaves the coin in the inventory, and
+    // the initiator can still toss it via the self action like any other participant.
+    if !([ACE_player, _class, objectFromNetId _holderNetId] call FUNC(respond)) exitWith {};
     GVAR(respondedHolderId) = _holderNetId;
 
     [format [LLSTRING(started), RESPONSE_RADIUS, RESPONSE_TIME], true] call ace_common_fnc_displayText;
