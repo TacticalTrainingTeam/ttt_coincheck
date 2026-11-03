@@ -20,6 +20,14 @@ jobs:
       - name: Checkout the source code
         uses: actions/checkout@v7
 
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Sync coin database
+        run: python tools/sync_coin_db.py
+
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
 
