@@ -28,6 +28,10 @@ jobs:
       - name: Sync coin database
         run: python tools/sync_coin_db.py
 
+      # PRs opened with GITHUB_TOKEN don't trigger the Validate workflow, so check here instead.
+      - name: Validate coin database
+        run: python tools/coin_db_validator.py
+
       - name: Open pull request
         uses: peter-evans/create-pull-request@v7
         with:
