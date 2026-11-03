@@ -8,8 +8,8 @@
     <a href="https://github.com/TacticalTrainingTeam/ttt_coincheck/issues">
         <img src="https://img.shields.io/github/issues-raw/TacticalTrainingTeam/ttt_coincheck.svg?style=flat-square&label=Issues" alt="TTT Coin Check Issues">
     </a>
-    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=0">
-        <img src="https://img.shields.io/steam/downloads/0.svg?style=flat-square&label=Downloads" alt="TTT Coin Check Downloads">
+    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3803743843">
+        <img src="https://img.shields.io/steam/downloads/3803743843.svg?style=flat-square&label=Downloads" alt="TTT Coin Check Downloads">
     </a>
     <a href="https://github.com/TacticalTrainingTeam/ttt_coincheck/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-APL SA-red?style=flat-square" alt="TTT Coin Check License">
@@ -25,7 +25,7 @@ __TTT Coin Check__ (TCC) recreates the military challenge-coin check: a player c
 
 The project is entirely __open-source__ and any contributions are welcome.
 
-Steam Workshop: <https://steamcommunity.com/sharedfiles/filedetails/?id=0>  
+Steam Workshop: <https://steamcommunity.com/sharedfiles/filedetails/?id=3803743843>  
 Discord: <https://discord.tacticalteam.de/>
 
 ## Features
