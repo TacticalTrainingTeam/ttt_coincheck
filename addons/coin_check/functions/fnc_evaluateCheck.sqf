@@ -1,13 +1,14 @@
 #include "..\script_component.hpp"
 /*
  * Author: Andx
- * Server-side: runs once a coin check's response window has ended. Anyone still carrying their
- * own coin and within range at that moment never presented it, so they lost - each of them is
- * told to play their punishment on their own machine, which skips it if they've opted out.
+ * Server-side: runs once a coin check's response window has ended. Any participant (everyone
+ * who was in range with their coin when the check started) still carrying their own coin never
+ * presented it, so they lost - wherever they are now. Each of them is told to play their
+ * punishment on their own machine, which skips it if they've opted out.
  *
  * Arguments:
  * 0: Ground weapon holder netId of the check <STRING>
- * 1: Position of the check <POSITION>
+ * 1: Participants <ARRAY of OBJECTs>
  *
  * Return Value:
  * None
@@ -15,18 +16,13 @@
  * Public: No
  */
 
-params ["_holderNetId", "_pos"];
+params ["_holderNetId", "_participants"];
 
 if (isNil QGVAR(activeCheck) || {(GVAR(activeCheck) select 0) != _holderNetId}) exitWith {};
 
 {
-    private _unit = _x;
-
-    if (_unit distance _pos <= RESPONSE_RADIUS) then {
-        (_unit call FUNC(hasCoin)) params ["_hasCoin"];
-
-        if (_hasCoin) then {
-            [QGVAR(punish), [], _unit] call CBA_fnc_targetEvent;
-        };
+    // Null if the participant disconnected in the meantime
+    if (!isNull _x && {(_x call FUNC(hasCoin)) select 0}) then {
+        [QGVAR(punish), [], _x] call CBA_fnc_targetEvent;
     };
-} forEach allPlayers;
+} forEach _participants;

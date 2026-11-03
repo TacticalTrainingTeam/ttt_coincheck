@@ -6,7 +6,7 @@ Der Bodenwaffenhalter wird ausschließlich vom Server erzeugt: Ein Client sendet
 
 Es kann immer nur ein Coin Check gleichzeitig laufen - solange einer aktiv ist, lehnt der Server weitere Startanfragen ab (`GVAR(activeCheck)`, serverseitig verwaltet in `fnc_serverStart.sqf`).
 
-Sobald die Reaktionszeit abläuft, prüft der Server (`fnc_evaluateCheck.sqf`), wer noch innerhalb der Reichweite steht und dabei immer noch seine eigene Münze bei sich trägt - diese Spieler haben nicht vorgezeigt und somit verloren (auch mehrere gleichzeitig möglich). Jeder von ihnen bekommt daraufhin auf seiner eigenen Maschine die in der Einstellung **Punishment** gewählte Übungsanimation (Kniebeugen, Liegestütze oder zufällig) für `PUNISHMENT_DURATION` Sekunden abgespielt.
+Teilnehmer eines Checks sind alle Spieler, die beim Start innerhalb der Reichweite stehen und ihre Münze bei sich tragen - der Server hält diese Liste beim Start fest (`fnc_serverStart.sqf`). Wer sich danach entfernt, bleibt Teilnehmer; wer erst später dazukommt, wird nicht mehr geprüft. Sobald die Reaktionszeit abläuft, prüft der Server (`fnc_evaluateCheck.sqf`), welche Teilnehmer immer noch ihre eigene Münze bei sich tragen - diese Spieler haben nicht vorgezeigt und somit verloren (auch mehrere gleichzeitig möglich). Jeder von ihnen bekommt daraufhin auf seiner eigenen Maschine die in der Einstellung **Punishment** gewählte Übungsanimation (Kniebeugen, Liegestütze oder zufällig) für `PUNISHMENT_DURATION` Sekunden abgespielt.
 
 ## Konfiguration
 
