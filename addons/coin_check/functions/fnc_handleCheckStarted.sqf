@@ -3,7 +3,7 @@
  * Author: Andx
  * CBA global event handler run on every client when the server grants a new coin check.
  * Records it so the self action can react to it, tosses the initiator's own coin now that the
- * shared holder is confirmed to exist, and prompts other nearby eligible players to respond.
+ * check is granted, and prompts other nearby eligible players to respond.
  *
  * Arguments:
  * 0: Ground weapon holder netId <STRING>
@@ -25,9 +25,7 @@ if (netId ACE_player == _initiatorNetId) exitWith {
     (ACE_player call FUNC(hasCoin)) params ["_hasCoin", "_class"];
     if (!_hasCoin) exitWith {};
 
-    // The holder may not have replicated yet - respond then leaves the coin in the inventory, and
-    // the initiator can still toss it via the self action like any other participant.
-    if !([ACE_player, _class, objectFromNetId _holderNetId] call FUNC(respond)) exitWith {};
+    [ACE_player, _class, _holderNetId, _pos] call FUNC(respond);
     GVAR(respondedHolderId) = _holderNetId;
 
     [format [LLSTRING(started), RESPONSE_RADIUS, RESPONSE_TIME], true] call ace_common_fnc_displayText;
