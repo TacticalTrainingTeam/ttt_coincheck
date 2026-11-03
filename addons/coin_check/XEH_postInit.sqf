@@ -1,7 +1,9 @@
 #include "script_component.hpp"
 
 if (isServer) then {
+    GVAR(holders) = createHashMap;
     [QGVAR(requestStart), {_this call FUNC(serverStart)}] call CBA_fnc_addEventHandler;
+    [QGVAR(toss), {_this call FUNC(serverToss)}] call CBA_fnc_addEventHandler;
 };
 
 if (!hasInterface) exitWith {};

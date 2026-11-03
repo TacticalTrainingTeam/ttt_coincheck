@@ -25,6 +25,9 @@ _holder setPosATL _pos;
 
 private _endTime = CBA_missionTime + RESPONSE_TIME;
 
+// The original holder's netId doubles as the check's ID, even if fnc_serverToss later has to
+// replace the holder after it was emptied.
+GVAR(holders) set [netId _holder, _holder];
 GVAR(activeCheck) = [netId _holder, _pos, _endTime, _unitNetId];
 
 [QGVAR(checkStarted), [netId _holder, _pos, _endTime, _unitNetId]] call CBA_fnc_globalEvent;

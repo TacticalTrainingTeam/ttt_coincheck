@@ -2,7 +2,7 @@
 
 Bildet den militärischen Brauch des "Coin Check" ab: Ein Spieler mit eigener Münze kann per ACE-Selbstinteraktion einen Coin Check starten. Alle anderen Spieler mit Münze und aktivierter Einstellung haben danach eine feste Zeit (`RESPONSE_TIME`) und Reichweite (`RESPONSE_RADIUS`), beide in `script_component.hpp`, um ebenfalls ihre Münze per Selbstinteraktion vorzuzeigen. Beim Vorzeigen wird eine Ablege-Animation gespielt und die Münze aus dem Inventar in einen gemeinsamen Bodenwaffenhalter am Ort des Checks gelegt.
 
-Der Bodenwaffenhalter wird ausschließlich vom Server erzeugt: Ein Client sendet per CBA-Event lediglich eine Startanfrage, der Server legt das Objekt an und verteilt dessen NetID an alle Clients. Das vermeidet Races durch client-seitig erzeugte Objekte und macht den Server zur alleinigen Quelle für den aktiven Check.
+Der Bodenwaffenhalter wird ausschließlich vom Server erzeugt: Ein Client sendet per CBA-Event lediglich eine Startanfrage, der Server legt das Objekt an und verteilt dessen NetID an alle Clients. Das vermeidet Races durch client-seitig erzeugte Objekte und macht den Server zur alleinigen Quelle für den aktiven Check. Auch das Ablegen läuft über den Server (`fnc_serverToss.sqf`): Der Client entfernt nur die Münze aus dem Inventar, der Server legt sie in den Halter. Wurde der Halter inzwischen geleert (und damit von der Engine gelöscht), erzeugt der Server am Ort des Checks einen neuen - eine abgelegte Münze geht so nie verloren.
 
 Es kann immer nur ein Coin Check gleichzeitig laufen - solange einer aktiv ist, lehnt der Server weitere Startanfragen ab (`GVAR(activeCheck)`, serverseitig verwaltet in `fnc_serverStart.sqf`).
 

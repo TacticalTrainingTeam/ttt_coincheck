@@ -1,32 +1,26 @@
 #include "..\script_component.hpp"
 /*
  * Author: Andx
- * Plays the toss gesture and moves a unit's coin from its inventory into the shared ground
- * weapon holder of a coin check. Does nothing if the holder doesn't exist (yet) on this machine,
- * so the coin is never removed without landing somewhere.
+ * Plays the toss gesture, removes a unit's coin from its inventory and hands it to the server,
+ * which puts it into the check's shared ground weapon holder (recreating it if it was emptied).
+ * Going through the server means the coin never depends on the holder existing on this machine.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  * 1: Coin classname <STRING>
- * 2: Ground weapon holder <OBJECT>
+ * 2: Check ID, the netId of the check's original holder <STRING>
+ * 3: Position of the check <POSITION>
  *
  * Return Value:
- * Whether the coin was tossed <BOOL>
+ * None
  *
  * Public: No
  */
 
-params ["_unit", "_class", "_holder"];
-
-if (isNull _holder) exitWith {
-    [LLSTRING(holderMissing), true] call ace_common_fnc_displayText;
-    false
-};
+params ["_unit", "_class", "_checkId", "_pos"];
 
 [_unit, "PutDown"] call ace_common_fnc_doGesture;
 _unit removeItem _class;
-_holder addItemCargoGlobal [_class, 1];
+[QGVAR(toss), [_checkId, _pos, _class]] call CBA_fnc_serverEvent;
 
 [LLSTRING(tossed), true] call ace_common_fnc_displayText;
-
-true
