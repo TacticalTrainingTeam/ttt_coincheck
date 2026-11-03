@@ -33,6 +33,10 @@
             <English>Enable Coin Check</English>
             <German>Coin Check aktivieren</German>
         </Key>
+        <Key ID="STR_tcc_Coin_Check_holderMissing">
+            <English>The coin pile isn't there (anymore) - try again in a moment.</English>
+            <German>Der Münzhaufen ist (nicht mehr) da - versuche es gleich noch einmal.</German>
+        </Key>
         <Key ID="STR_tcc_Coin_Check_inProgress">
             <English>A coin check is already in progress.</English>
             <German>Es läuft bereits ein Coin Check.</German>

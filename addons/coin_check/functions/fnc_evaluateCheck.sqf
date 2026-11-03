@@ -3,7 +3,7 @@
  * Author: Andx
  * Server-side: runs once a coin check's response window has ended. Anyone still carrying their
  * own coin and within range at that moment never presented it, so they lost - each of them is
- * told to play their punishment on their own machine.
+ * told to play their punishment on their own machine, which skips it if they've opted out.
  *
  * Arguments:
  * 0: Ground weapon holder netId of the check <STRING>

@@ -22,9 +22,7 @@ if (!_hasCoin) exitWith {};
 (_unit call FUNC(scanChecks)) params ["_joinId", "_nearAnswered", "_checkInProgress"];
 
 if (_joinId != "") exitWith {
-    private _holder = objectFromNetId _joinId;
-    if (!isNull _holder) then {
-        [_unit, _class, _holder] call FUNC(respond);
+    if ([_unit, _class, objectFromNetId _joinId] call FUNC(respond)) then {
         GVAR(respondedHolderId) = _joinId;
     };
 };
