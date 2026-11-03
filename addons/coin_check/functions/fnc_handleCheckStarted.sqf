@@ -3,13 +3,14 @@
  * Author: Andx
  * CBA global event handler run on every client when the server grants a new coin check.
  * Records it so the self action can react to it, tosses the initiator's own coin now that the
- * check is granted, and prompts other nearby eligible players to respond.
+ * check is granted, and prompts the other participants to respond.
  *
  * Arguments:
  * 0: Ground weapon holder netId <STRING>
  * 1: Position of the check <POSITION>
  * 2: Response deadline, in CBA_missionTime <NUMBER>
  * 3: Initiator netId <STRING>
+ * 4: Participant netIds, as determined by the server <ARRAY of STRINGs>
  *
  * Return Value:
  * None
@@ -17,7 +18,7 @@
  * Public: No
  */
 
-params ["_holderNetId", "_pos", "_endTime", "_initiatorNetId"];
+params ["_holderNetId", "_pos", "_endTime", "_initiatorNetId", "_participantIds"];
 
 GVAR(activeCheck) = [_holderNetId, _pos, _endTime, _initiatorNetId];
 
@@ -32,7 +33,9 @@ if (netId ACE_player == _initiatorNetId) exitWith {
 };
 
 if (!GVAR(enabled)) exitWith {};
-if (ACE_player distance _pos > RESPONSE_RADIUS) exitWith {};
+// Use the server's participant list rather than this client's own distance check, so exactly
+// the players who will be evaluated get prompted.
+if !(netId ACE_player in _participantIds) exitWith {};
 
 (ACE_player call FUNC(hasCoin)) params ["_hasCoin"];
 if (!_hasCoin) exitWith {};
