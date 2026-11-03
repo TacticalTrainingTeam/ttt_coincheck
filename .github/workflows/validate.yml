@@ -16,3 +16,5 @@ jobs:
       run: python3 tools/stringtable_validator.py
     - name: Validate Config
       run: python tools/config_style_checker.py
+    - name: Validate Coin Database
+      run: python3 tools/coin_db_validator.py
