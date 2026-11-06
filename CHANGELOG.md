@@ -13,6 +13,19 @@ version, and start a fresh empty [Unreleased] section above it. -->
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-11-06
+
+### Added
+
+- New coins for players added to the squad rosters
+
+### Fixed
+
+- Coin check punishment no longer applies to players who opted out, or are dead, unconscious or in a vehicle; the animation reset is broadcast to all clients
+- Coin no longer lost when the coin pile is missing (not yet replicated or deleted after being emptied)
+- Responses no longer fail after the coin pile was emptied; tossing is now handled by the server, which recreates the pile if needed
+- Coin distribution now respects a mission or server forcing distribution off
+
 ## [1.0.1] - 2026-09-18
 
 ## [1.0.0] - 2026-09-15
