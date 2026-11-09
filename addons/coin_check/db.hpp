@@ -156,3 +156,9 @@ class GVAR(coin_24): GVAR(coin_base) {
     uid = "76561197960489271";
     displayName = "Coin (Pio)";
 };
+
+class GVAR(coin_25): GVAR(coin_base) {
+    scope = 1;
+    uid = "76561197993044168";
+    displayName = "Coin (Huber Sepp)";
+};
