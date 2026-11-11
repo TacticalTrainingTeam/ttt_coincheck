@@ -15,9 +15,9 @@ if (!hasInterface) exitWith {};
 // GVAR(distributionEnabled) isn't read while it still holds its default.
 ["CBA_settingsInitialized", {
     [
-        {!isNull ACE_player && {GVAR(enabled)}},
+        {!isNull ACE_player},
         {
-            [{[] call FUNC(distributeCoin)}, 3] call CBA_fnc_waitAndExecute;
+            [{[] call FUNC(distributeCoin)}, 5] call CBA_fnc_waitAndExecute;
         }
     ] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
