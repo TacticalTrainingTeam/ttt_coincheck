@@ -13,6 +13,17 @@ version, and start a fresh empty [Unreleased] section above it. -->
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-11-12
+
+### Added
+
+- New coins for players added to the squad rosters
+
+### Changed
+
+- Registered players now receive their coin even when "Enable Coin Check" is turned off; the setting still gates the actions and punishment
+- Coin distribution delay raised from 3 to 5 seconds to give mission loadout scripts more time to finish
+
 ## [1.0.2] - 2026-11-06
 
 ### Added
