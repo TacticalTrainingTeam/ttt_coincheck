@@ -31,7 +31,9 @@ class CfgPatches {
             QGVAR(coin_22),
             QGVAR(coin_23),
             QGVAR(coin_24),
-            QGVAR(coin_25)
+            QGVAR(coin_25),
+            QGVAR(coin_26),
+            QGVAR(coin_27)
         };
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_main", "ace_interact_menu", "ace_common"};
