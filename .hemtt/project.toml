@@ -18,4 +18,5 @@ include = [
     "authors.txt",
     "LICENSE",
     "README.md",
+    "img/icon_ca.paa",
 ]
