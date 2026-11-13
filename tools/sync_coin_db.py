@@ -11,7 +11,8 @@ import xml.etree.ElementTree as ET
 # Fetches the TTT squad rosters (main + TvT) and adds a coin_check db.hpp entry
 # for any player not already present, keeping GVAR(coin_N) numbering sequential
 # and gap-free. Also appends the new classnames to weapons[] in config.cpp, as
-# required by db.hpp's own documented convention.
+# required by db.hpp's own documented convention, and to the coin crate's
+# contents in crate.hpp.
 #
 # Players appearing in either roster more than once (or in both rosters) are
 # only added once, using their first-encountered name.
@@ -24,6 +25,7 @@ SQUAD_URLS = [
 ADDON_DIR = os.path.join("addons", "coin_check")
 DB_PATH = os.path.join(ADDON_DIR, "db.hpp")
 CONFIG_PATH = os.path.join(ADDON_DIR, "config.cpp")
+CRATE_PATH = os.path.join(ADDON_DIR, "crate.hpp")
 
 
 def resolve_path(path):
@@ -125,12 +127,21 @@ def update_config(config_path, new_numbers):
     return True
 
 
+def update_crate(crate_path, new_numbers):
+    with open(crate_path, "a", encoding="utf-8") as file:
+        for number in new_numbers:
+            file.write(
+                "class _xx_coin_{0} {{ name = QGVAR(coin_{0}); count = 1; }};\n".format(number)
+            )
+
+
 def main():
     print("Coin Database Sync")
     print("-------------------")
 
     db_path = resolve_path(DB_PATH)
     config_path = resolve_path(CONFIG_PATH)
+    crate_path = resolve_path(CRATE_PATH)
 
     print("Fetching squad rosters...")
 
@@ -166,9 +177,11 @@ def main():
     if not update_config(config_path, new_numbers):
         return 1
 
+    update_crate(crate_path, new_numbers)
+
     print(
-        "Added {} new coin(s) to {} and {}.".format(
-            len(new_entries), db_path, config_path
+        "Added {} new coin(s) to {}, {} and {}.".format(
+            len(new_entries), db_path, config_path, crate_path
         )
     )
     return 0
