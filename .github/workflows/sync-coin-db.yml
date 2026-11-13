@@ -1,4 +1,4 @@
-# Syncs the coin database (db.hpp + weapons[] in config.cpp) against the TTT squad rosters
+# Syncs the coin database (db.hpp + weapons[] in config.cpp + crate.hpp) against the TTT squad rosters
 # and opens a pull request with any new entries. Keeping this out of the release build means
 # every coin classname <-> UID assignment is committed once and stays stable across releases.
 
@@ -43,3 +43,4 @@ jobs:
           add-paths: |
             addons/coin_check/db.hpp
             addons/coin_check/config.cpp
+            addons/coin_check/crate.hpp

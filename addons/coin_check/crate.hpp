@@ -1,0 +1,29 @@
+// Contents of the coin crate (GVAR(coinCrate) in CfgVehicles.hpp): one of every coin in db.hpp.
+// Kept in sync with db.hpp by tools/sync_coin_db.py and checked by tools/coin_db_validator.py.
+class _xx_coin_1 { name = QGVAR(coin_1); count = 1; };
+class _xx_coin_2 { name = QGVAR(coin_2); count = 1; };
+class _xx_coin_3 { name = QGVAR(coin_3); count = 1; };
+class _xx_coin_4 { name = QGVAR(coin_4); count = 1; };
+class _xx_coin_5 { name = QGVAR(coin_5); count = 1; };
+class _xx_coin_6 { name = QGVAR(coin_6); count = 1; };
+class _xx_coin_7 { name = QGVAR(coin_7); count = 1; };
+class _xx_coin_8 { name = QGVAR(coin_8); count = 1; };
+class _xx_coin_9 { name = QGVAR(coin_9); count = 1; };
+class _xx_coin_10 { name = QGVAR(coin_10); count = 1; };
+class _xx_coin_11 { name = QGVAR(coin_11); count = 1; };
+class _xx_coin_12 { name = QGVAR(coin_12); count = 1; };
+class _xx_coin_13 { name = QGVAR(coin_13); count = 1; };
+class _xx_coin_14 { name = QGVAR(coin_14); count = 1; };
+class _xx_coin_15 { name = QGVAR(coin_15); count = 1; };
+class _xx_coin_16 { name = QGVAR(coin_16); count = 1; };
+class _xx_coin_17 { name = QGVAR(coin_17); count = 1; };
+class _xx_coin_18 { name = QGVAR(coin_18); count = 1; };
+class _xx_coin_19 { name = QGVAR(coin_19); count = 1; };
+class _xx_coin_20 { name = QGVAR(coin_20); count = 1; };
+class _xx_coin_21 { name = QGVAR(coin_21); count = 1; };
+class _xx_coin_22 { name = QGVAR(coin_22); count = 1; };
+class _xx_coin_23 { name = QGVAR(coin_23); count = 1; };
+class _xx_coin_24 { name = QGVAR(coin_24); count = 1; };
+class _xx_coin_25 { name = QGVAR(coin_25); count = 1; };
+class _xx_coin_26 { name = QGVAR(coin_26); count = 1; };
+class _xx_coin_27 { name = QGVAR(coin_27); count = 1; };
