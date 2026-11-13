@@ -17,6 +17,10 @@ version, and start a fresh empty [Unreleased] section above it. -->
 
 - Mod icon is now packed into the release; it was missing, causing "Picture img\icon_ca.paa not found" in the RPT
 
+### Added
+
+- Challenge Coin Crate: a supply box (Eden and Zeus) holding one of every coin, e.g. for handing out replacement coins
+
 ## [1.0.3] - 2026-11-12
 
 ### Added

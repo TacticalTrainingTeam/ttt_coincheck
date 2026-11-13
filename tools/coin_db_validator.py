@@ -8,12 +8,14 @@ import sys
 # -----------------------
 # Checks that every coin class in coin_check's db.hpp is also listed in weapons[]
 # in config.cpp (and vice versa) - without that, addItem fails in-game with
-# "not found". Also checks that coins are numbered 1..N without gaps (which
+# "not found". Also checks that the coin crate (crate.hpp) holds exactly one
+# of every coin, that coins are numbered 1..N without gaps (which
 # fnc_buildDatabase relies on) and that every UID is a unique Steam64 ID.
 
 ADDON_DIR = os.path.join("addons", "coin_check")
 DB_PATH = os.path.join(ADDON_DIR, "db.hpp")
 CONFIG_PATH = os.path.join(ADDON_DIR, "config.cpp")
+CRATE_PATH = os.path.join(ADDON_DIR, "crate.hpp")
 
 
 def resolve_path(path):
@@ -57,6 +59,42 @@ def parse_config(config_path):
     return [int(n) for n in re.findall(r"QGVAR\(coin_(\d+)\)", match.group(1))]
 
 
+def parse_crate(crate_path):
+    with open(crate_path, "r", encoding="utf-8") as file:
+        content = strip_comments(file.read())
+
+    entry = r"class\s+(\w+)\s*\{\s*name\s*=\s*QGVAR\(coin_(\d+)\)\s*;\s*count\s*=\s*(\d+)\s*;\s*\};"
+    entries = re.findall(entry, content)
+    unparsed = re.sub(entry, "", content).strip()
+
+    return [(name, int(number), int(count)) for name, number, count in entries], unparsed
+
+
+def validate_crate(numbers, crate_entries, unparsed):
+    errors = []
+
+    if unparsed:
+        errors.append("crate.hpp contains entries that are not of the form 'class _xx_coin_N { name = QGVAR(coin_N); count = 1; };'")
+
+    crate_numbers = []
+    for name, number, count in crate_entries:
+        if name != "_xx_coin_{}".format(number):
+            errors.append("crate.hpp entry {} holds coin_{}, expected class name _xx_coin_{}".format(name, number, number))
+        if count != 1:
+            errors.append("crate.hpp holds {} of coin_{}, expected 1".format(count, number))
+        crate_numbers.append(number)
+
+    if len(crate_numbers) != len(set(crate_numbers)):
+        errors.append("crate.hpp contains duplicate coins")
+
+    for number in sorted(set(numbers) - set(crate_numbers)):
+        errors.append("coin_{} is in db.hpp but missing from crate.hpp".format(number))
+    for number in sorted(set(crate_numbers) - set(numbers)):
+        errors.append("coin_{} is in crate.hpp but missing from db.hpp".format(number))
+
+    return errors
+
+
 def validate(coins, weapons):
     errors = []
 
@@ -98,7 +136,10 @@ def main():
     coins = parse_db(resolve_path(DB_PATH))
     weapons = parse_config(resolve_path(CONFIG_PATH))
 
+    crate_entries, crate_unparsed = parse_crate(resolve_path(CRATE_PATH))
+
     errors = validate(coins, weapons)
+    errors += validate_crate([number for number, _ in coins], crate_entries, crate_unparsed)
 
     for error in errors:
         print("  ERROR: {}".format(error))

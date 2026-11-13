@@ -9,6 +9,10 @@
             <English>You've already tossed your coin here.</English>
             <German>Du hast deine Münze hier bereits abgelegt.</German>
         </Key>
+        <Key ID="STR_tcc_Coin_Check_coinCrate_displayName">
+            <English>Challenge Coin Crate</English>
+            <German>Challenge-Coin-Kiste</German>
+        </Key>
         <Key ID="STR_tcc_Coin_Check_coin_description">
             <English>A personal challenge coin. Present it during a coin check, or lose the bet.</English>
             <German>Ein persönlicher Challenge Coin. Bei einem Coin Check vorzeigen, oder die Wette verlieren.</German>

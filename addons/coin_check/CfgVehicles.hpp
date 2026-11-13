@@ -12,4 +12,19 @@ class CfgVehicles {
             };
         };
     };
+
+    class Box_NATO_Support_F;
+    class GVAR(coinCrate): Box_NATO_Support_F {
+        author = ECSTRING(main,Author);
+        scope = 2;
+        scopeCurator = 2;
+        displayName = CSTRING(coinCrate_displayName);
+
+        class TransportWeapons {};
+        class TransportMagazines {};
+        class TransportBackpacks {};
+        class TransportItems {
+            #include "crate.hpp"
+        };
+    };
 };

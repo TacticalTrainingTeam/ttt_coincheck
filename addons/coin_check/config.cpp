@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {};
+        units[] = {QGVAR(coinCrate)};
         // Every coin classname from db.hpp must be listed here too, or the engine won't
         // recognize it as real content (see the note at the top of db.hpp).
         weapons[] = {
