@@ -13,6 +13,12 @@ version, and start a fresh empty [Unreleased] section above it. -->
 
 ## [Unreleased]
 
+### Changed
+
+- Coin checks are now fully server-authoritative: the server decides who takes part, accepts each presented coin and hands out punishments
+- Only players in range with their coin when a check starts take part; players arriving later can no longer join
+- Anyone who took part but didn't present their coin loses, even if they left the area before the time ran out
+
 ## [1.1.0] - 2026-11-13
 
 ### Added

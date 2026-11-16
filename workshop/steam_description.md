@@ -10,7 +10,7 @@
 ## Features
 
 - **Coin check self-action** — present your coin via ACE, or lose the bet
-- **Server-authoritative** — the server alone creates the shared holder and decides who's late
+- **Server-authoritative** — the server alone decides who takes part, who presented and who lost
 - **Configurable punishment** — knee bends, push-ups, or random, per player
 - **Automatic distribution** — registered players get their coin once per mission
 

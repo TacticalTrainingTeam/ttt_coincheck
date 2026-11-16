@@ -1,13 +1,12 @@
 #include "..\script_component.hpp"
 /*
  * Author: Andx
- * Server-side handler for a coin-check start request: creates the shared ground weapon holder
- * and becomes the authoritative source for the check, then announces it to everyone via a CBA
- * global event. Ignored if a check is already running - only one can be active at a time.
+ * Server-side: starts a coin check at the initiator's position. Creates the shared ground weapon
+ * holder, fixes who is eligible (every living player in range carrying their coin), tosses the
+ * initiator's coin, prompts the other eligible players and schedules the evaluation.
  *
  * Arguments:
- * 0: Initiator netId <STRING>
- * 1: Initiator's position <POSITION>
+ * 0: Initiator <OBJECT>
  *
  * Return Value:
  * None
@@ -15,25 +14,23 @@
  * Public: No
  */
 
-params ["_unitNetId", "_pos"];
+params ["_unit"];
 
-if (!isNil QGVAR(activeCheck) && {(GVAR(activeCheck) select 2) > CBA_missionTime}) exitWith {};
-if (isNull (objectFromNetId _unitNetId)) exitWith {};
+private _pos = getPosATL _unit;
 
 private _holder = createVehicle ["GroundWeaponHolder", [0,0,0], [], 0, "CAN_COLLIDE"];
 _holder setPosATL _pos;
 
-private _endTime = CBA_missionTime + RESPONSE_TIME;
+private _eligible = allPlayers select {
+    alive _x && {_x distance _pos <= RESPONSE_RADIUS} && {(_x call FUNC(hasCoin)) select 0}
+};
 
-// The original holder's netId doubles as the check's ID, even if fnc_serverToss later has to
-// replace the holder after it was emptied.
-GVAR(holders) set [netId _holder, _holder];
-GVAR(activeCheck) = [netId _holder, _pos, _endTime, _unitNetId];
+// [holder, position, eligible units, units that tossed]
+GVAR(activeCheck) = [_holder, _pos, _eligible, []];
 
-[QGVAR(checkStarted), [netId _holder, _pos, _endTime, _unitNetId]] call CBA_fnc_globalEvent;
+[_unit] call FUNC(serverToss);
 
-[
-    {_this call FUNC(evaluateCheck)},
-    [netId _holder, _pos],
-    RESPONSE_TIME
-] call CBA_fnc_waitAndExecute;
+[QGVAR(notify), [LSTRING(started), [RESPONSE_RADIUS, RESPONSE_TIME]], _unit] call CBA_fnc_targetEvent;
+[QGVAR(notify), [LSTRING(prompt), [RESPONSE_TIME]], _eligible - [_unit]] call CBA_fnc_targetEvent;
+
+[FUNC(evaluateCheck), [], RESPONSE_TIME] call CBA_fnc_waitAndExecute;

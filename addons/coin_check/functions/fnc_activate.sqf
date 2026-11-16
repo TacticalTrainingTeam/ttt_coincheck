@@ -1,9 +1,8 @@
 #include "..\script_component.hpp"
 /*
  * Author: Andx
- * Statement for the ACE self action: joins the active coin check if the player is in range and
- * hasn't responded yet, notes if they already have, otherwise requests a new one - unless a
- * check is already running elsewhere, in which case nothing happens until it ends.
+ * Statement for the ACE self action: hands the activation to the server, which decides whether
+ * it starts a new coin check, counts as a toss into the active one, or is rejected.
  *
  * Arguments:
  * None
@@ -14,24 +13,4 @@
  * Public: No
  */
 
-private _unit = ACE_player;
-
-(_unit call FUNC(hasCoin)) params ["_hasCoin", "_class"];
-if (!_hasCoin) exitWith {};
-
-(_unit call FUNC(scanChecks)) params ["_joinId", "_nearAnswered", "_checkInProgress"];
-
-if (_joinId != "") exitWith {
-    [_unit, _class, _joinId, GVAR(activeCheck) select 1] call FUNC(respond);
-    GVAR(respondedHolderId) = _joinId;
-};
-
-if (_nearAnswered) exitWith {
-    [LLSTRING(alreadyTossed), true] call ace_common_fnc_displayText;
-};
-
-if (_checkInProgress) exitWith {
-    [LLSTRING(inProgress), true] call ace_common_fnc_displayText;
-};
-
-[_unit] call FUNC(start);
+[QGVAR(activate), [ACE_player]] call CBA_fnc_serverEvent;

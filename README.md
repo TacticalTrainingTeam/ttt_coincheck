@@ -30,8 +30,8 @@ Discord: <https://discord.tacticalteam.de/>
 
 ## Features
 
-- Start a coin check via an ACE self-action; everyone else with a coin and the setting enabled has a set time and range to present theirs
-- Server-authoritative: the server alone creates the shared ground weapon holder and decides who's late
+- Start a coin check via an ACE self-action; everyone else in range with a coin and the setting enabled has a set time to present theirs
+- Server-authoritative: the server alone decides who takes part, accepts presented coins into the shared ground weapon holder and decides who lost
 - Configurable per-player punishment (knee bends, push-ups, or random) for anyone who fails to present in time
 - A Challenge Coin Crate (Eden and Zeus) holding one of every coin
 - Coins are distributed automatically to registered players and kept in a database (`addons/coin_check/db.hpp`) synced against the TTT squad roster by [`tools/sync_coin_db.py`](tools/sync_coin_db.py)
