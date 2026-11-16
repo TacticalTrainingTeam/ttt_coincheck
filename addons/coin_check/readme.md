@@ -1,12 +1,18 @@
 # Coin Check
 
-Bildet den militärischen Brauch des "Coin Check" ab: Ein Spieler mit eigener Münze kann per ACE-Selbstinteraktion einen Coin Check starten. Alle anderen Spieler mit Münze und aktivierter Einstellung haben danach eine feste Zeit (`RESPONSE_TIME`) und Reichweite (`RESPONSE_RADIUS`), beide in `script_component.hpp`, um ebenfalls ihre Münze per Selbstinteraktion vorzuzeigen. Beim Vorzeigen wird eine Ablege-Animation gespielt und die Münze aus dem Inventar in einen gemeinsamen Bodenwaffenhalter am Ort des Checks gelegt.
+Bildet den militärischen Brauch des "Coin Check" ab: Ein Spieler mit eigener Münze kann per ACE-Selbstinteraktion einen Coin Check starten. Alle Spieler, die beim Start innerhalb der Reichweite (`RESPONSE_RADIUS`) stehen und ihre Münze dabei haben, müssen danach innerhalb einer festen Zeit (`RESPONSE_TIME`, beide in `script_component.hpp`) ebenfalls ihre Münze per Selbstinteraktion vorzeigen. Beim Vorzeigen wird eine Ablege-Animation gespielt und die Münze aus dem Inventar in einen gemeinsamen Bodenwaffenhalter am Ort des Checks gelegt.
 
-Der Bodenwaffenhalter wird ausschließlich vom Server erzeugt: Ein Client sendet per CBA-Event lediglich eine Startanfrage, der Server legt das Objekt an und verteilt dessen NetID an alle Clients. Das vermeidet Races durch client-seitig erzeugte Objekte und macht den Server zur alleinigen Quelle für den aktiven Check. Auch das Ablegen läuft über den Server (`fnc_serverToss.sqf`): Der Client entfernt nur die Münze aus dem Inventar, der Server legt sie in den Halter. Wurde der Halter inzwischen geleert (und damit von der Engine gelöscht), erzeugt der Server am Ort des Checks einen neuen - eine abgelegte Münze geht so nie verloren.
+Der Ablauf ist vollständig serverautoritativ, der Zustand des aktiven Checks (`GVAR(activeCheck)`: Halter, Position, teilnahmeberechtigte Spieler, Spieler mit abgelegter Münze) existiert nur auf dem Server. Die Selbstinteraktion schickt lediglich ein CBA-Event an den Server (`fnc_activate.sqf`), der entscheidet (`fnc_serverActivate.sqf`):
 
-Es kann immer nur ein Coin Check gleichzeitig laufen - solange einer aktiv ist, lehnt der Server weitere Startanfragen ab (`GVAR(activeCheck)`, serverseitig verwaltet in `fnc_serverStart.sqf`).
+- **Kein Check aktiv:** Der Server startet einen neuen (`fnc_serverStart.sqf`) – er erzeugt den Bodenwaffenhalter, legt fest, wer teilnahmeberechtigt ist (lebend, in Reichweite, mit eigener Münze), legt die Münze des Initiators ab und benachrichtigt nur die Berechtigten.
+- **Check aktiv, Spieler berechtigt, noch in Reichweite und hat noch nicht abgelegt:** Der Server legt die Münze in den Halter (`fnc_serverToss.sqf`) und weist den Client an, Animation zu spielen und die Münze aus dem Inventar zu entfernen (`fnc_respond.sqf`). Wurde der Halter inzwischen geleert (und damit von der Engine gelöscht), erzeugt der Server am Ort des Checks einen neuen – eine abgelegte Münze geht so nie verloren.
+- **Sonst:** Der Spieler erhält die Meldung, dass er schon abgelegt hat bzw. bereits ein Check läuft.
 
-Sobald die Reaktionszeit abläuft, prüft der Server (`fnc_evaluateCheck.sqf`), wer noch innerhalb der Reichweite steht und dabei immer noch seine eigene Münze bei sich trägt - diese Spieler haben nicht vorgezeigt und somit verloren (auch mehrere gleichzeitig möglich). Jeder von ihnen bekommt daraufhin auf seiner eigenen Maschine die in der Einstellung **Punishment** gewählte Übungsanimation (Kniebeugen, Liegestütze oder zufällig) für `PUNISHMENT_DURATION` Sekunden abgespielt.
+Es kann immer nur ein Coin Check gleichzeitig laufen. Wer erst nach dem Start in Reichweite kommt, ist nicht teilnahmeberechtigt.
+
+Sobald die Reaktionszeit abläuft, schließt der Server den Check (`fnc_evaluateCheck.sqf`): Alle Berechtigten, die ihre Münze nicht abgelegt haben, haben verloren (auch mehrere gleichzeitig möglich) – unabhängig davon, wo sie sich zu diesem Zeitpunkt befinden. Jeder von ihnen bekommt daraufhin auf seiner eigenen Maschine die in der Einstellung **Punishment** gewählte Übungsanimation (Kniebeugen, Liegestütze oder zufällig) für `PUNISHMENT_DURATION` Sekunden abgespielt.
+
+Die persönlichen Einstellungen **Enable Coin Check** und **Punishment** kennt der Server nicht. Er behandelt daher alle Spieler gleich; Meldungen (`GVAR(notify)`) und Bestrafung werden auf dem Client verworfen, wenn der Spieler nicht teilnimmt.
 
 ## Konfiguration
 

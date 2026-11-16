@@ -1,14 +1,20 @@
 #include "script_component.hpp"
 
 if (isServer) then {
-    GVAR(holders) = createHashMap;
-    [QGVAR(requestStart), {_this call FUNC(serverStart)}] call CBA_fnc_addEventHandler;
-    [QGVAR(toss), {_this call FUNC(serverToss)}] call CBA_fnc_addEventHandler;
+    [QGVAR(activate), {_this call FUNC(serverActivate)}] call CBA_fnc_addEventHandler;
 };
 
 if (!hasInterface) exitWith {};
 
-[QGVAR(checkStarted), {_this call FUNC(handleCheckStarted)}] call CBA_fnc_addEventHandler;
+[QGVAR(notify), {
+    params ["_key", ["_args", []]];
+
+    // The server can't see the per-client GVAR(enabled), so opted-out players filter here.
+    if (!GVAR(enabled)) exitWith {};
+
+    [format ([localize _key] + _args), true] call ace_common_fnc_displayText;
+}] call CBA_fnc_addEventHandler;
+[QGVAR(toss), {_this call FUNC(respond)}] call CBA_fnc_addEventHandler;
 [QGVAR(punish), {call FUNC(playPunishment)}] call CBA_fnc_addEventHandler;
 
 // Settings forced by the server/mission may only arrive after postInit - wait for them so
