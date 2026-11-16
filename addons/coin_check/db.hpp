@@ -174,3 +174,33 @@ class GVAR(coin_27): GVAR(coin_base) {
     uid = "76561198253799277";
     displayName = "Coin (LittleBassman)";
 };
+
+class GVAR(coin_28): GVAR(coin_base) {
+    scope = 1;
+    uid = "76561198043435836";
+    displayName = "Coin (Reimchen)";
+};
+
+class GVAR(coin_29): GVAR(coin_base) {
+    scope = 1;
+    uid = "76561199095500107";
+    displayName = "Coin (Inukas)";
+};
+
+class GVAR(coin_30): GVAR(coin_base) {
+    scope = 1;
+    uid = "76561198171118457";
+    displayName = "Coin (LottaCats)";
+};
+
+class GVAR(coin_31): GVAR(coin_base) {
+    scope = 1;
+    uid = "76561198088815624";
+    displayName = "Coin (Colin)";
+};
+
+class GVAR(coin_32): GVAR(coin_base) {
+    scope = 1;
+    uid = "76561198011917202";
+    displayName = "Coin (Rederrich)";
+};

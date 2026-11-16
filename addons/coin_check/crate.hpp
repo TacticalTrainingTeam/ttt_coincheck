@@ -27,3 +27,8 @@ class _xx_coin_24 { name = QGVAR(coin_24); count = 1; };
 class _xx_coin_25 { name = QGVAR(coin_25); count = 1; };
 class _xx_coin_26 { name = QGVAR(coin_26); count = 1; };
 class _xx_coin_27 { name = QGVAR(coin_27); count = 1; };
+class _xx_coin_28 { name = QGVAR(coin_28); count = 1; };
+class _xx_coin_29 { name = QGVAR(coin_29); count = 1; };
+class _xx_coin_30 { name = QGVAR(coin_30); count = 1; };
+class _xx_coin_31 { name = QGVAR(coin_31); count = 1; };
+class _xx_coin_32 { name = QGVAR(coin_32); count = 1; };
